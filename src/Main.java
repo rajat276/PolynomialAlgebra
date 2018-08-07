@@ -9,8 +9,8 @@ public class Main{
 
     public static void main(String[] args){
 
-        String A="3X^2 + 4X^5 - 8";
-        String B="-2X^5 + 4X^7 - 2";
+        String A="X + 2";
+        String B="1 - X";
 
         Polynomial polyA = new Polynomial(A);
         Polynomial polyB = new Polynomial(B);
