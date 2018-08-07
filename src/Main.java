@@ -3,13 +3,17 @@ import java.util.Scanner;
 import java.util.TreeMap;
 
 public class Main {
-    
+
     public static String TreeMapToString(TreeMap<Integer,Integer> poly){
         String result="";
         for(Map.Entry<Integer,Integer> entry : poly.entrySet()) {
             Integer key = entry.getKey();
             Integer value = entry.getValue();
-            result += "+" + value + "X^" + key;
+            if(key !=0) {
+                result += "+" + value + "X^" + key;
+            }else {
+                result +="+" + value;
+            }
             //System.out.println(value + "X^" + key);
         }
         result= result.substring(1);
@@ -29,7 +33,10 @@ public class Main {
             }
             String[] split= s.split("X");
             int coefficient= Integer.parseInt(split[0]);
-            int power= Integer.parseInt(split[1].replaceAll("\\^",""));
+            int power=0;
+            if(split.length > 1) {
+                power = Integer.parseInt(split[1].replaceAll("\\^", ""));
+            }
             //System.out.println(coefficient + ":" +power);
             if(treeMap.containsKey(power)){
                 treeMap.put(power, treeMap.get(power)+ coefficient);
@@ -48,8 +55,8 @@ public class Main {
         String B = scanner.nextLine();
         System.out.println("Addition: Press 1\nSubstraction: Press 2\nMultiplication: Press 3\n");
         int operation = scanner.nextInt();*/
-        String A="3X^2 + 4X^5";
-        String B="-2X^5 + 4X^7";
+        String A="3X^2 + 4X^5 + 7 ";
+        String B="-2X^5 + 4X^7 -8";
         TreeMapToString(StringToTreeMap(A));
         TreeMapToString(StringToTreeMap(B));
 
